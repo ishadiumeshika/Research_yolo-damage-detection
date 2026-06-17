@@ -1,0 +1,13 @@
+train: ../train/images
+val: ../valid/images
+test: ../test/images
+
+nc: 9
+names: ['carton_box', 'export_mark_label', 'fragile_label', 'handle_with_care_label', 'keep_dry_label', 'package_damage', 'protect_from_heat_label', 'this_side_up_label', 'wooden_box']
+
+roboflow:
+  workspace: ishadis-workspace-52e3q
+  project: packaging-8htcz
+  version: 4
+  license: Private
+  url: https://app.roboflow.com/ishadis-workspace-52e3q/packaging-8htcz/4
