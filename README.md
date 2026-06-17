@@ -4,5 +4,5 @@ final year research project
 
 This project includes a demonstration video showing the YOLOv11 model detecting package damage and shipping labels.
 
-📹 Demo video: `demo.avi`
+📹 Demo video: `360_video.avi`
 
