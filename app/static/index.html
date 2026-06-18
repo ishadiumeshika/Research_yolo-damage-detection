@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Packaging Review Assistant (Static)</title>
+  <link rel="stylesheet" href="/static/styles.css" />
+</head>
+<body>
+  <div class="page-shell">
+    <main class="content-grid">
+      <section class="panel form-panel">
+        <div class="panel-title">
+          <p class="eyebrow">360 package review</p>
+          <h2>Package intake</h2>
+          <p>Upload one video clip, then tell the system what should be visible or declared.</p>
+        </div>
+
+        <form id="analyze-form" class="analysis-form">
+          <label class="field upload-field">
+            <span>360 video clip</span>
+            <input id="video" name="video" type="file" accept="video/*" required />
+          </label>
+
+          <div class="two-col">
+            <label class="field">
+              <span>Package weight in kg</span>
+              <input id="package_weight_kg" name="package_weight_kg" type="number" min="0" step="0.01" placeholder="12.5" required />
+            </label>
+
+            <label class="field">
+              <span>Declared contents or visible items</span>
+              <textarea id="package_contents" name="package_contents" rows="4" placeholder="electronics, carton box, shipping label"></textarea>
+            </label>
+          </div>
+
+          <div class="flag-grid">
+            <label><input type="checkbox" name="fragile" /> Fragile</label>
+            <label><input type="checkbox" name="shipping_label" /> Shipping label</label>
+            <label><input type="checkbox" name="keep_dry" /> Keep dry</label>
+            <label><input type="checkbox" name="protect_from_heat" /> Protect from heat</label>
+            <label><input type="checkbox" name="this_side_up" /> This side up</label>
+            <label><input type="checkbox" name="handle_with_care" /> Handle with care</label>
+          </div>
+
+          <button class="submit-button" type="submit">Analyze package</button>
+          <p class="helper-text">The model can confirm visible packaging and labels. It cannot prove hidden contents that are not visible in the video.</p>
+        </form>
+      </section>
+
+      <section class="panel result-panel">
+        <div class="panel-title">
+          <h2>Assessment</h2>
+          <p>Results will appear here after the upload finishes processing.</p>
+        </div>
+
+        <div id="result-empty" class="empty-state">
+          <div class="empty-graphic"></div>
+          <p>No analysis yet. Upload a package video to start.</p>
+        </div>
+
+        <div id="result-body" class="result-body hidden">
+          <div id="verdict-badge" class="verdict-badge">normal</div>
+
+          <div class="metrics">
+            <div class="metric"><span>Weight</span><strong id="metric-weight">-</strong></div>
+            <div class="metric"><span>Video length</span><strong id="metric-duration">-</strong></div>
+            <div class="metric"><span>Detected labels</span><strong id="metric-detected">-</strong></div>
+          </div>
+
+          <div class="list-block">
+            <h3>Detected labels</h3>
+            <ul id="detected-list"></ul>
+          </div>
+
+          <div class="list-block">
+            <h3>Missing or blocked items</h3>
+            <ul id="missing-list"></ul>
+          </div>
+
+          <div class="list-block">
+            <h3>Warnings</h3>
+            <ul id="warning-list"></ul>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script src="/static/app.js"></script>
+</body>
+</html>
